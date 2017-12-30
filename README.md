@@ -1,2 +1,20 @@
+```
+██████╗ ███████╗ █████╗  ██████╗████████╗
+██╔══██╗██╔════╝██╔══██╗██╔════╝╚══██╔══╝
+██████╔╝█████╗  ███████║██║        ██║
+██╔══██╗██╔══╝  ██╔══██║██║        ██║
+██║  ██║███████╗██║  ██║╚██████╗   ██║
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝
+```
+
 # react
-reaction time game
+### a python reaction time game
+
+one of my first attempts at object-oriented programming
+
+
+----
+#### how to play:
+
+
+1. click play

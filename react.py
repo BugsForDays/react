@@ -105,6 +105,7 @@ class Game(tk.Frame):
         if self.counter == self.randomtime:
             self.box.config(background = '#647FE9')
             self.timeboxchange = datetime.datetime.now()
+            # self.checkmouseclick()  #uncomment to cheat, will break game at line 117
         else:
             self.counter += 1
             self.after(1000, self.changecolor)

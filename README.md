@@ -10,7 +10,7 @@
 # react
 ### a python reaction time game
 
-one of my first attempts at object-oriented programming
+my first attempt at object-oriented programming
 
 
 ----
@@ -18,3 +18,5 @@ one of my first attempts at object-oriented programming
 
 
 1. click play
+2. click the button when the box turns blue
+3. check out your score!

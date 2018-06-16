@@ -15,6 +15,7 @@
 import tkinter as tk
 import random
 import datetime
+import pickle
 
 """
 ██╗    ██╗██╗██████╗  ██████╗ ███████╗████████╗     ██████╗██╗      █████╗ ███████╗███████╗███████╗███████╗
@@ -114,17 +115,47 @@ class Game(tk.Frame):
             BodyText(self, text='you clicked too early')
             GameButton(self, text='try again', command=self.reinit).pack()
         else:
-            BodyText(self, text='reaction time: ' + str(float(str(datetime.datetime.now() - self.timeboxchange)[5:-3])) + ' seconds')
-            GameButton(self, text='play again', command=self.reinit).pack()
+            score = str(float(str(datetime.datetime.now() - self.timeboxchange)[5:-3]))
+            self.destroy()
+            Highscores(self.parent, score).pack()
         self.clickbox.pack_forget()
     def reinit(self):
         self.destroy()
         Game(self.parent).pack()
 
-# TODO: add a Highscores screen after game screen
 class Highscores(tk.Frame):
-    def __init__(self, parent):
+    def __init__(self, parent, score):
         tk.Frame.__init__(self, parent)
+        self.parent = parent
+        self.score = score
+        TitleText(self)
+        BodyText(self, text='your reaction time: ' + self.score + ' seconds')
+        BodyText(self, text='-'*10)
+        BodyText(self, text='highscores').pack()
+        self.addhighscore()
+        self.showhighscores()
+        GameButton(self, text='play again', command=self.playagain).pack()
+    def addhighscore(self):
+        with open('.highscores', 'rb') as highscores_file:
+            highscores = pickle.load(highscores_file)
+        sorted_highscores = sorted(highscores)
+        if len(highscores) == 5 and self.score < sorted_highscores[4]:
+            del sorted_highscores[4]
+            sorted_highscores.append(self.score)
+            with open('.highscores', 'wb') as highscores_file:
+                pickle.dump(sorted_highscores, highscores_file)
+    def showhighscores(self):
+        with open('.highscores', 'rb') as highscores_file:
+            highscores = pickle.load(highscores_file)
+        sorted_highscores = sorted(highscores)
+        if len(highscores) == 0:
+            BodyText(self, text='no highscores yet').pack()
+        else:
+            for i in range(0, len(highscores)):
+                BodyText(self, text= str(i+1) + '. ' + str(sorted_highscores[i]) + ' secs')
+    def playagain(self):
+        self.destroy()
+        Game(self.parent).pack()
 
 #init game
 app = MainWindow()

@@ -7,7 +7,7 @@
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝
 ****************************************************************************
 |                         python reaction game                             |
-|   created by bugsfordays aka philip z(https://github.com/BugsForDays)    |
+|   created by petabite aka philip z(https://github.com/petabite)          |
 ****************************************************************************
 """
 
